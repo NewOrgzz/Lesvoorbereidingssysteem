@@ -1,3 +1,74 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Hide default password toggle */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="password"]::-webkit-contacts-auto-fill-button,
+input[type="password"]::-webkit-credentials-auto-fill-button {
+    display: none !important;
+}
+
+/* Hide the default password toggle button in Chrome */
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button,
+input::-webkit-search-cancel-button,
+input::-webkit-search-decoration,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration,
+input::-webkit-textfield-decoration-container,
+input::-webkit-validation-bubble,
+input::-webkit-validation-bubble-arrow,
+input::-webkit-validation-bubble-message {
+    display: none !important;
+}
+
+/* Additional specific selector for password reveal button */
+input[type="password"]::-webkit-password-toggle {
+    display: none !important;
+}
+
+/* Force hide any password toggle buttons */
+.password-toggle-hidden::-ms-reveal,
+.password-toggle-hidden::-webkit-contacts-auto-fill-button,
+.password-toggle-hidden::-webkit-credentials-auto-fill-button,
+.password-toggle-hidden::-webkit-password-toggle {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    right: -999999px !important;
+}
+
+/* Custom login card styling */
+.login-card {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom input styling */
+.form-input {
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom button styling */
+.login-button {
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
