@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Version;
 use App\Models\LessonPreparation;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class VersionController extends Controller
 {
+    use AuthorizesRequests;
+
     public function index(LessonPreparation $lessonPreparation)
     {
         $versions = $lessonPreparation->versions()->orderBy('versie_nummer', 'desc')->get();

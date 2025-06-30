@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\LessonPreparation;
 use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class LessonPreparationController extends Controller
 {
+    use AuthorizesRequests;
+
     public function index()
     {
         $lessonPreparations = LessonPreparation::with(['subject', 'user'])
