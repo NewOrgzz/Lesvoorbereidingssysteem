@@ -1,1 +1,48 @@
- 
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: neworgzr-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=orgzr
+      - DB_USERNAME=orgzr
+      - DB_PASSWORD=orgzr
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    container_name: neworgzr-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: orgzr
+      POSTGRES_USER: orgzr
+      POSTGRES_PASSWORD: orgzr
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  nginx:
+    image: nginx:alpine
+    container_name: neworgzr-nginx
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/app.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+
+volumes:
+  pgdata: 
