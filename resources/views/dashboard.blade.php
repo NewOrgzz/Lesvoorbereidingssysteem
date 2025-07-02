@@ -2,16 +2,29 @@
 
 @section('content')
 <div class="container mx-auto py-8">
-    <div class="flex items-center justify-between mb-6">
-        <h1 class="text-2xl font-bold">Dashboard</h1>
-        <div class="flex items-center gap-2">
-            <span class="inline-flex items-center px-2 py-1 bg-red-100 text-red-600 text-xs rounded-full">2 nieuwe notificaties</span>
+    <!-- Nieuwe lichte header -->
+    <div class="flex items-center justify-between mb-8 bg-white rounded-lg shadow-sm px-6 py-4 border border-gray-100">
+        <div class="flex items-center gap-3">
+            <span class="inline-flex items-center justify-center w-10 h-10 bg-blue-100 text-blue-600 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v4a1 1 0 001 1h3m10-5v4a1 1 0 01-1 1h-3m-4 0h4" />
+                </svg>
+            </span>
+            <div>
+                <h1 class="text-2xl font-bold leading-tight">Dashboard</h1>
+                <span class="text-gray-500 text-sm">Overzicht &amp; snelle acties</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <span class="inline-flex items-center px-3 py-1 bg-red-100 text-red-600 text-xs rounded-full">2 nieuwe notificaties</span>
             <div class="flex items-center gap-2">
                 <span class="font-semibold">Jan Docent</span>
                 <span class="inline-flex items-center justify-center w-8 h-8 bg-blue-100 text-blue-700 rounded-full font-bold">JD</span>
             </div>
         </div>
     </div>
+    <!-- Einde nieuwe header -->
+
     <div class="mb-8">
         <div class="bg-white rounded-lg shadow p-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
@@ -69,13 +82,11 @@
                             <span class="inline-flex items-center justify-center w-8 h-8 bg-blue-100 text-blue-600 rounded-full"><svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M11 5h2m-1 0v14m-7-7h14'/></svg></span>
                         @elseif($activiteit['type'] === 'versie')
                             <span class="inline-flex items-center justify-center w-8 h-8 bg-purple-100 text-purple-600 rounded-full"><svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 13l4 4L19 7'/></svg></span>
-                        @elseif($activiteit['type'] === 'verwijderd')
-                            <span class="inline-flex items-center justify-center w-8 h-8 bg-red-100 text-red-600 rounded-full"><svg xmlns='http://www.w3.org/2000/svg' class='h-5 w-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 18L18 6M6 6l12 12'/></svg></span>
-                        @else
-                            <span class="inline-flex items-center justify-center w-8 h-8 bg-gray-100 text-gray-600 rounded-full">?</span>
                         @endif
-                        <span>{{ $activiteit['beschrijving'] }}</span>
-                        <span class="text-gray-500 ml-auto text-xs">{{ $activiteit['tijd'] }}</span>
+                        <div>
+                            <div class="font-medium">{{ $activiteit['beschrijving'] }}</div>
+                            <div class="text-gray-500 text-xs">{{ $activiteit['vak'] }} &middot; {{ $activiteit['tijd'] }}</div>
+                        </div>
                     </li>
                 @endforeach
             </ul>

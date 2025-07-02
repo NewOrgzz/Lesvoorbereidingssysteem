@@ -18,21 +18,23 @@
         <div class="min-h-screen bg-gray-100 flex">
             @include('partials.sidebar')
             <div class="flex-1 flex flex-col">
-                @include('layouts.navigation')
+            @include('layouts.navigation')
 
-                <!-- Page Heading -->
-                @isset($header)
+            <!-- Page Heading -->
+            @isset($header)
                     <header class="bg-white shadow">
-                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                            {{ $header }}
-                        </div>
-                    </header>
-                @endisset
+                    <div class="max-w-7xl mx-auto py-4 px-3 sm:px-4 lg:px-6">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endisset
 
-                <!-- Page Content -->
+            <!-- Page Content -->
                 <main class="flex-1">
-                    @yield('content')
-                </main>
+                    <div class="container mx-auto py-4 px-3">
+                        @yield('content')
+                    </div>
+            </main>
             </div>
         </div>
     </body>
