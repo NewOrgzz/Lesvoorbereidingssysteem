@@ -1,149 +1,61 @@
 # NewOrgzr
 
-<p align="center">
-  <strong>Een moderne Laravel applicatie voor lesvoorbereiding en organisatie</strong>
-</p>
+Een Laravel applicatie voor het beheren van lesvoorbereidingen.
 
-## Over NewOrgzr
+## Beschrijving
 
-NewOrgzr is een web-applicatie gebouwd met Laravel die docenten helpt bij het organiseren en voorbereiden van hun lessen. De applicatie biedt een intuïtieve interface voor het beheren van schooljaren, vakken, lesvoorbereidingen en lesversies.
+NewOrgzr is een webapplicatie waarmee docenten lesvoorbereidingen kunnen maken, beheren en organiseren. De applicatie ondersteunt het beheer van schooljaren, vakken, lesvoorbereidingen en lesversies.
 
-## Functies
+## Technologie Stack
 
--   **Gebruikersbeheer**: Volledig authenticatiesysteem met registratie en login
--   **Schooljaren**: Beheer van verschillende schooljaren
--   **Vakken**: Organisatie van vakken per schooljaar
--   **Lesvoorbereidingen**: Maak en beheer gedetailleerde lesvoorbereidingen
--   **Lesversies**: Versiebeheer voor lesmateriaal
--   **Dashboard**: Overzichtelijk dashboard met alle belangrijke informatie
--   **Profielbeheer**: Persoonlijke profielinstellingen
+-   **Backend**: Laravel 12
+-   **PHP**: 8.2+
+-   **Database**: PostgreSQL (via Docker) of SQLite
+-   **Frontend**: Tailwind CSS, Alpine.js
+-   **Build Tool**: Vite
+-   **Authenticatie**: Laravel Breeze
 
-## Technische Stack
-
--   **Backend**: Laravel 11 (PHP)
--   **Frontend**: Blade templates met Tailwind CSS
--   **Database**: MySQL/PostgreSQL
--   **Authentication**: Laravel Breeze
--   **Styling**: Tailwind CSS
-
-## Installatie
-
-### Vereisten
+## Vereisten
 
 -   PHP 8.2 of hoger
 -   Composer
 -   Node.js en npm
--   MySQL of PostgreSQL database
+-   Docker en Docker Compose (optioneel, voor containerized setup)
 
-### Stappen
+## Functies
 
-1. **Kloon de repository**
+-   **Authenticatie**: Registratie en inloggen via Laravel Breeze
+-   **Schooljaren**: Beheer van schooljaren
+-   **Vakken**: Beheer van vakken/subjecten
+-   **Lesvoorbereidingen**: Maak en beheer lesvoorbereidingen met details zoals:
+    -   Titel, datum, tijd, lokaal
+    -   Groepssamenstelling
+    -   Beginsituatie en leerdoelen
+    -   Voorbereiding en werkvorm
+    -   Materiaal type
+-   **Lesversies**: Versiebeheer voor lesvoorbereidingen
+-   **Dashboard**: Overzicht van alle lesvoorbereidingen
+-   **Instellingen**: Gebruikersinstellingen
 
-    ```bash
-    git clone [repository-url]
-    cd NewOrgzr
-    ```
+## Development
 
-2. **Installeer PHP dependencies**
+Run alle development services tegelijk:
 
-    ```bash
-    composer install
-    ```
+```bash
+composer dev
+```
 
-3. **Kopieer environment bestand**
+Dit start:
 
-    ```bash
-    cp .env.example .env
-    ```
+-   Laravel development server
+-   Queue worker
+-   Laravel Pail (logs)
+-   Vite dev server
 
-4. **Configureer database instellingen in `.env`**
-
-    ```env
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=neworgzr
-    DB_USERNAME=your_username
-    DB_PASSWORD=your_password
-    ```
-
-5. **Genereer applicatie sleutel**
-
-    ```bash
-    php artisan key:generate
-    ```
-
-6. **Voer database migraties uit**
-
-    ```bash
-    php artisan migrate
-    ```
-
-7. **Installeer frontend dependencies**
-
-    ```bash
-    npm install
-    ```
-
-8. **Bouw assets**
-
-    ```bash
-    npm run build
-    ```
-
-9. **Start de development server**
-    ```bash
-    php artisan serve
-    ```
-
-De applicatie is nu beschikbaar op `http://localhost:8000`
-
-## Database Structuur
-
-De applicatie bevat de volgende hoofdtabellen:
-
--   **users**: Gebruikersaccounts
--   **schooljaren**: Schooljaren
--   **vakken**: Vakken per schooljaar
--   **lesvoorbereidingen**: Lesvoorbereidingen per vak
--   **lesversies**: Versies van lesmateriaal
-
-## Ontwikkeling
-
-### Code Style
-
-Dit project volgt de PSR-12 coding standards voor PHP.
-
-### Testing
+## Testing
 
 Voer tests uit met:
 
 ```bash
 php artisan test
 ```
-
-### Database Seeding
-
-Voor testdata:
-
-```bash
-php artisan db:seed
-```
-
-## Deployment
-
-Voor productie deployment:
-
-1. Zet `APP_ENV=production` in `.env`
-2. Zet `APP_DEBUG=false` in `.env`
-3. Voer `php artisan config:cache` uit
-4. Voer `php artisan route:cache` uit
-5. Voer `php artisan view:cache` uit
-
-## Licentie
-
-Dit project is open source software onder de [MIT licentie](https://opensource.org/licenses/MIT).
-
-## Support
-
-Voor vragen of problemen, neem contact op via de project issues of stuur een email naar het development team.
