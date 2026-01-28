@@ -7,6 +7,7 @@ use App\Http\Controllers\LesvoorbereidingenController;
 use App\Http\Controllers\SchooljarenController;
 use App\Http\Controllers\VakkenController;
 use App\Http\Controllers\LesversiesController;
+use App\Http\Controllers\UserManagementController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,7 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile/settings', [ProfileController::class, 'updateSettings'])->name('profile.settings');
 });
 
-// Routes (Lesvoorbereidingen, Schooljaren, Vakken)
+// Routes (Lesvoorbereidingen, Schooljaren, Vakken, Gebruikers)
 Route::middleware('auth')->group(function () {
     Route::resource('lesvoorbereidingen', LesvoorbereidingenController::class);
     Route::resource('schooljaren', SchooljarenController::class);
@@ -32,6 +33,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/instellingen', function () {
         return view('instellingen');
     })->name('instellingen');
+
+    // Gebruikersbeheer
+    Route::get('/users', [UserManagementController::class, 'index'])->name('users.index');
+    Route::delete('/users/{user}', [UserManagementController::class, 'destroy'])->name('users.destroy');
+    Route::post('/users/{user}/reset-password', [UserManagementController::class, 'resetPassword'])->name('users.resetPassword');
 });
 
 require __DIR__.'/auth.php';
